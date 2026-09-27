@@ -2,6 +2,8 @@
 
 # Lancelot Trading Machine
 
+**Live project page:** https://cryptocarouge.github.io/projects/lancelot-trading-machine.html
+
 Public architecture showcase of a private, modular market-intelligence and automation system built with n8n.
 
 The production workflow is intentionally not published. This repository documents the engineering approach without exposing credentials, wallets, private endpoints, execution parameters or proprietary trading logic.
