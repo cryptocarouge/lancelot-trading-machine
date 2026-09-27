@@ -1,5 +1,8 @@
 <p align="center"><img src="assets/header.svg" alt="Lancelot Trading Machine" width="100%"></p>
 
+[![Public safety scan](https://github.com/cryptocarouge/lancelot-trading-machine/actions/workflows/public-safety.yml/badge.svg)](https://github.com/cryptocarouge/lancelot-trading-machine/actions/workflows/public-safety.yml)  
+**Portfolio-safe public edition · production remains private**
+
 # Lancelot Trading Machine
 
 **Live project page:** https://cryptocarouge.github.io/projects/lancelot-trading-machine.html
