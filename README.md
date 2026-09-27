@@ -6,6 +6,8 @@ Public architecture showcase of a private, modular market-intelligence and autom
 
 The production workflow is intentionally not published. This repository documents the engineering approach without exposing credentials, wallets, private endpoints, execution parameters or proprietary trading logic.
 
+> **Engineering case study:** [architecture decisions, failure modes and privacy boundary](docs/case-study.md)
+
 ## What it demonstrates
 
 - Multi-source market-data ingestion
