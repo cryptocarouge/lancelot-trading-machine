@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/header.svg" alt="Lancelot Trading Machine" width="100%"></p>
+
 # Lancelot Trading Machine
 
 Public architecture showcase of a private, modular market-intelligence and automation system built with n8n.
@@ -10,66 +12,40 @@ The production workflow is intentionally not published. This repository document
 - Dedicated Binance and CoinGecko market workers
 - Dynamic market-universe and discovery stages
 - Candidate qualification before downstream processing
-- Separation between data collection, decision logic and execution
+- Separation between acquisition, decision logic and execution
 - Persistent state and position reconciliation
 - Operational alerts and Telegram control
-- Daily, weekly and monthly reporting
-- Cache, retry and rate-limit handling
+- Reporting, retries, cache and rate-limit handling
 - Monitoring and degradation detection
 
 ## Conceptual architecture
 
-```text
-Market Sources
-     |
-     +--> Binance Worker
-     |
-     +--> CoinGecko Worker
-     |
-     +--> Other Market / On-chain Sources
-                 |
-                 v
-          Normalized Market State
-                 |
-                 v
-             Discovery
-                 |
-                 v
-           Qualification
-                 |
-                 v
-       Intelligence / Context
-                 |
-                 v
-          Decision Layer
-                 |
-                 v
-       Risk & Position State
-                 |
-                 v
-             Execution
-                 |
-                 v
-      Reconciliation / Alerts
+```mermaid
+flowchart TD
+    A[Market Sources] --> B[Binance Worker]
+    A --> C[CoinGecko Worker]
+    A --> D[Other Market / On-chain Sources]
+    B --> E[Normalized Market State]
+    C --> E
+    D --> E
+    E --> F[Discovery]
+    F --> G[Qualification]
+    G --> H[Intelligence / Context]
+    H --> I[Decision Layer]
+    I --> J[Risk & Position State]
+    J --> K[Execution]
+    K --> L[Reconciliation / Alerts]
 ```
 
 ## Worker design
 
-The production system uses dedicated workers rather than forcing every data source through one monolithic path.
+The private system uses dedicated workers rather than forcing every source through one monolithic path.
 
-**Binance Worker**
-- Short-interval market data
-- Normalization
-- Cache/state writes
+**Binance Worker:** short-interval data, normalization and cache/state writes.
 
-**CoinGecko Worker**
-- Pair resolution
-- Solana-pair validation
-- OHLCV retrieval
-- Rate-limit control
-- Single-flight locking and cache writes
+**CoinGecko Worker:** pair resolution, Solana-pair validation, OHLCV retrieval, rate-limit control and single-flight locking.
 
-These workers are represented here as architecture components rather than separate public repositories.
+The workers are represented here as architecture components rather than separate public repositories.
 
 ## Engineering principles
 
@@ -81,18 +57,7 @@ These workers are represented here as architecture components rather than separa
 
 ## Security boundary
 
-Not published:
-
-- API keys, tokens or credentials
-- Wallet identifiers or private keys
-- Private webhook URLs
-- Telegram chat IDs
-- Google Sheet IDs
-- Entry/exit thresholds
-- Position-sizing logic
-- Exact BUY/SELL rules
-- Proprietary prompts or scoring logic
-- Production workflow JSON
+Not published: credentials, wallet identifiers, private webhooks, chat IDs, live Sheet IDs, entry/exit thresholds, position sizing, exact BUY/SELL rules, proprietary prompts/scoring logic or production workflow JSON.
 
 ## Disclaimer
 
